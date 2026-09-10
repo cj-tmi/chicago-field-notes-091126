@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#112e3b">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="A pocket field guide for a Chicago wedding weekend, September 11–13, 2026.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>Chicago Field Notes · Wedding Weekend</title>
+  <style>
+    :root {
+      --ink: #13252d;
+      --navy: #112e3b;
+      --cream: #f4eddf;
+      --paper: #fffaf0;
+      --red: #e24a34;
+      --gold: #f1b94b;
+      --blue: #7fc9cf;
+      --green: #366c57;
+      --muted: #66757a;
+      --line: rgba(19,37,45,.15);
+      --shadow: 0 18px 50px rgba(17,46,59,.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(241,185,75,.23), transparent 24rem),
+        linear-gradient(180deg, #f9f3e7 0%, var(--cream) 100%);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: -5rem;
+      z-index: 99;
+      background: white;
+      padding: .8rem 1rem;
+      border-radius: 999px;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .hero {
+      position: relative;
+      min-height: 540px;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(17,46,59,.93), rgba(17,46,59,.98)),
+        repeating-linear-gradient(90deg, transparent 0 56px, rgba(255,255,255,.04) 56px 58px);
+      padding: 1.25rem 1.1rem 3.3rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+      background-size: 42px 42px;
+      transform: perspective(600px) rotateX(62deg) scale(1.8) translateY(8%);
+      transform-origin: bottom;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -260px;
+      top: -250px;
+      border: 46px solid var(--red);
+      border-radius: 50%;
+      opacity: .92;
+    }
+
+    .hero-inner, main, footer { width: min(1080px, 100%); margin-inline: auto; }
+    .hero-inner { position: relative; z-index: 2; min-width: 0; }
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .edition {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .73rem;
+      font-weight: 800;
+    }
+
+    .dot { width: .65rem; height: .65rem; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(241,185,75,.18); }
+    .share {
+      border: 1px solid rgba(255,255,255,.35);
+      color: white;
+      background: rgba(255,255,255,.08);
+      border-radius: 999px;
+      padding: .65rem .9rem;
+      cursor: pointer;
+    }
+
+    .kicker { color: var(--gold); text-transform: uppercase; letter-spacing: .15em; font-weight: 900; font-size: .78rem; margin: 0 0 .5rem; }
+    h1, h2, h3, .serif { font-family: Georgia, "Times New Roman", serif; }
+    h1 { font-size: clamp(3.5rem, 11vw, 7rem); line-height: .82; letter-spacing: -.065em; margin: 0; max-width: 760px; }
+    h1 em { color: var(--gold); font-style: italic; font-weight: 400; }
+    .hero-deck { max-width: 620px; margin: 1.4rem 0 1.8rem; color: rgba(255,255,255,.82); font-size: 1.07rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: .7rem; }
+    .pill { border-radius: 999px; padding: .55rem .8rem; font-weight: 800; font-size: .78rem; letter-spacing: .02em; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); }
+    .pill.alert { color: var(--navy); background: var(--gold); border-color: var(--gold); }
+
+    .track {
+      position: absolute;
+      z-index: 1;
+      left: -7%;
+      right: -7%;
+      bottom: 34px;
+      height: 16px;
+      transform: rotate(-2deg);
+      background: var(--blue);
+      box-shadow: 0 0 0 5px rgba(127,201,207,.18);
+    }
+    .track span { position: absolute; width: 22px; height: 22px; background: var(--paper); border: 6px solid var(--red); border-radius: 50%; top: -3px; }
+    .track span:nth-child(1) { left: 18%; }
+    .track span:nth-child(2) { left: 49%; }
+    .track span:nth-child(3) { left: 81%; }
+
+    main { padding: 0 1rem 7rem; }
+    section { scroll-margin-top: 80px; padding-top: 3.4rem; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.2rem; }
+    .section-head h2 { margin: 0; font-size: clamp(2.3rem, 8vw, 4.25rem); letter-spacing: -.045em; line-height: .95; }
+    .section-head p { max-width: 360px; margin: 0; color: var(--muted); font-size: .92rem; }
+    .eyebrow { display: block; font-family: Inter, ui-sans-serif, sans-serif; color: var(--red); text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; font-weight: 900; margin-bottom: .45rem; }
+
+    .card {
+      background: rgba(255,250,240,.91);
+      border: 1px solid rgba(19,37,45,.1);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .base-card { margin-top: -1.9rem; position: relative; z-index: 3; padding: 1.1rem; }
+    .base-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 1rem; align-items: stretch; }
+    .base-info { display: flex; gap: 1rem; align-items: center; }
+    .hotel-mark { flex: 0 0 auto; width: 58px; height: 58px; border-radius: 17px; background: var(--navy); color: white; display: grid; place-items: center; font-family: Georgia, serif; font-size: 1.55rem; }
+    .base-info h2 { font-size: 1.35rem; margin: 0 0 .2rem; }
+    .base-info p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .button-row { display: flex; gap: .55rem; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      min-height: 44px;
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      padding: .68rem .92rem;
+      font-weight: 850;
+      font-size: .82rem;
+      cursor: pointer;
+    }
+    .btn.primary { background: var(--red); color: white; border-color: var(--red); }
+    .btn.dark { background: var(--navy); color: white; border-color: var(--navy); }
+    .btn.small { min-height: 38px; padding: .5rem .72rem; font-size: .76rem; }
+
+    .signal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+    .signal { padding: 1.15rem; min-height: 132px; position: relative; overflow: hidden; }
+    .signal::after { content: ""; position: absolute; width: 66px; height: 66px; right: -24px; bottom: -24px; border: 16px solid var(--gold); border-radius: 50%; opacity: .55; }
+    .signal strong { display: block; font-size: 1.1rem; margin-bottom: .25rem; }
+    .signal span { color: var(--muted); font-size: .85rem; }
+    .signal.red { color: white; background: var(--red); }
+    .signal.red span { color: rgba(255,255,255,.82); }
+    .signal.red::after { border-color: white; }
+
+    .weather-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+    .weather { padding: 1.15rem; position: relative; overflow: hidden; }
+    .weather.today { border: 2px solid var(--red); }
+    .weather-top { display: flex; align-items: start; justify-content: space-between; gap: .5rem; }
+    .weather-day { font-weight: 950; text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; }
+    .weather-icon { font-size: 1.8rem; line-height: 1; }
+    .temp { font-family: Georgia, serif; font-size: 2.7rem; letter-spacing: -.06em; margin: .65rem 0 .1rem; }
+    .weather-note { color: var(--muted); font-size: .84rem; }
+    .forecast-note { margin-top: .8rem; font-size: .84rem; color: var(--muted); display: flex; gap: .5rem; align-items: start; }
+
+    .timeline { position: relative; margin-left: .75rem; }
+    .timeline::before { content: ""; position: absolute; left: 18px; top: 1rem; bottom: 1rem; width: 4px; border-radius: 4px; background: linear-gradient(var(--blue), var(--red), var(--gold)); }
+    .day-block { position: relative; padding-left: 3.5rem; margin-bottom: 2rem; }
+    .day-dot { position: absolute; left: 6px; top: .25rem; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--paper); border: 6px solid var(--red); box-shadow: 0 0 0 5px var(--cream); }
+    .day-block > h3 { font-size: 2.1rem; margin: 0 0 .7rem; line-height: 1; }
+    .day-block > h3 small { display: block; color: var(--muted); font: 800 .72rem/1.2 Inter, sans-serif; text-transform: uppercase; letter-spacing: .12em; margin-top: .35rem; }
+    .event { padding: 1rem; margin-bottom: .72rem; display: grid; grid-template-columns: 110px 1fr auto; gap: 1rem; align-items: start; }
+    .event-time { font-weight: 950; color: var(--red); font-size: .9rem; }
+    .event h4 { font-size: 1rem; margin: 0 0 .15rem; }
+    .event p { color: var(--muted); font-size: .84rem; margin: 0; }
+    .tag { display: inline-flex; border-radius: 999px; padding: .3rem .55rem; font-size: .69rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; background: #e7f3f2; color: var(--green); white-space: nowrap; }
+    .tag.official { background: #ffe4dd; color: #9b2e1e; }
+    .tag.fixed { background: #fff0c7; color: #6b4a00; }
+
+    .route-note { margin: .3rem 0 .85rem 3.5rem; color: var(--muted); font-size: .82rem; }
+    .route-note strong { color: var(--ink); }
+
+    .pack-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 1rem; align-items: start; }
+    .mission { background: var(--navy); color: white; padding: 1.2rem; position: sticky; top: 1rem; }
+    .mission h3 { font-size: 1.7rem; margin: 0 0 .4rem; }
+    .mission p { color: rgba(255,255,255,.75); margin: 0 0 1rem; font-size: .9rem; }
+    .mission .errand { padding: 1rem; border-radius: 16px; background: var(--gold); color: var(--navy); margin-bottom: .75rem; }
+    .mission .errand strong { display: block; font-size: 1.15rem; }
+    .progress-wrap { margin-top: 1rem; }
+    .progress-label { display: flex; justify-content: space-between; font-size: .76rem; font-weight: 800; margin-bottom: .4rem; color: rgba(255,255,255,.78); }
+    .progress-bar { height: 9px; border-radius: 99px; background: rgba(255,255,255,.13); overflow: hidden; }
+    .progress-bar span { display: block; width: 0; height: 100%; background: var(--blue); transition: width .25s ease; }
+
+    .check-groups { display: grid; gap: .8rem; }
+    .check-group { padding: 1rem; }
+    .check-group h3 { font-size: 1.25rem; margin: 0 0 .8rem; }
+    .check { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: .6rem; padding: .62rem 0; border-top: 1px solid var(--line); cursor: pointer; }
+    .check:first-of-type { border-top: 0; }
+    .check input { width: 21px; height: 21px; margin: 0; accent-color: var(--red); }
+    .check span { font-size: .91rem; }
+    .check input:checked + span { text-decoration: line-through; color: var(--muted); }
+    .qty { color: var(--muted); font-size: .76rem; font-weight: 800; }
+    .buy { color: var(--red); font-size: .66rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 950; }
+
+    .filters { display: flex; gap: .45rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter { border: 1px solid var(--line); background: rgba(255,250,240,.55); border-radius: 999px; padding: .56rem .8rem; font-weight: 850; color: var(--muted); cursor: pointer; }
+    .filter.active { background: var(--navy); color: white; border-color: var(--navy); }
+    .rec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+    .rec { padding: 1.05rem; display: flex; flex-direction: column; min-height: 255px; }
+    .rec.hidden { display: none; }
+    .rec-top { display: flex; justify-content: space-between; align-items: start; gap: .7rem; margin-bottom: .7rem; }
+    .rec-icon { width: 42px; height: 42px; flex: 0 0 auto; border-radius: 13px; display: grid; place-items: center; background: #e4f1ef; font-size: 1.25rem; }
+    .rec-fit { color: var(--red); text-transform: uppercase; letter-spacing: .08em; font-size: .65rem; font-weight: 950; text-align: right; }
+    .rec h3 { font-size: 1.32rem; margin: 0 0 .28rem; }
+    .rec p { color: var(--muted); font-size: .84rem; margin: 0 0 1rem; flex: 1; }
+    .rec-meta { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .8rem; }
+    .mini { border-radius: 999px; background: #f0eadc; padding: .3rem .52rem; font-size: .68rem; font-weight: 850; }
+    .rec-actions { display: flex; flex-wrap: wrap; gap: .45rem; }
+
+    .callout { padding: 1.2rem; background: var(--gold); border: 0; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; }
+    .callout h3 { margin: 0 0 .2rem; font-size: 1.35rem; }
+    .callout p { margin: 0; color: rgba(19,37,45,.74); font-size: .87rem; }
+
+    details { border-top: 1px solid var(--line); }
+    details:first-of-type { border-top: 0; }
+    details summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; padding: .9rem 0; font-weight: 900; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: "+"; color: var(--red); font-size: 1.25rem; }
+    details[open] summary::after { content: "–"; }
+    details .detail-body { color: var(--muted); font-size: .86rem; padding: 0 0 1rem; }
+
+    .sources { padding: 1.1rem; }
+    .sources a { color: var(--green); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .sources .source-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 1.5rem; }
+
+    footer { padding: 3rem 1rem 7rem; color: var(--muted); font-size: .78rem; }
+    footer strong { color: var(--ink); }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 20;
+      left: 50%;
+      bottom: max(.75rem, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      display: flex;
+      width: min(540px, calc(100% - 1rem));
+      justify-content: space-around;
+      padding: .55rem;
+      border-radius: 20px;
+      background: rgba(17,46,59,.94);
+      box-shadow: 0 12px 40px rgba(17,46,59,.3);
+      backdrop-filter: blur(14px);
+    }
+    .bottom-nav a { color: rgba(255,255,255,.7); text-decoration: none; display: grid; place-items: center; gap: .05rem; min-width: 58px; font-weight: 800; font-size: .62rem; text-transform: uppercase; letter-spacing: .06em; }
+    .bottom-nav a b { font-size: 1.1rem; font-weight: 400; }
+    .bottom-nav a.active { color: var(--gold); }
+
+    .toast { position: fixed; z-index: 50; left: 50%; bottom: 6rem; transform: translate(-50%, 30px); opacity: 0; pointer-events: none; background: var(--navy); color: white; border-radius: 999px; padding: .7rem 1rem; font-weight: 800; font-size: .8rem; transition: .2s ease; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 800px) {
+      .base-grid, .pack-layout { grid-template-columns: 1fr; }
+      .button-row { justify-content: flex-start; }
+      .signal-grid, .weather-grid, .rec-grid { grid-template-columns: 1fr 1fr; }
+      .mission { position: static; }
+      .section-head { display: block; }
+      .section-head p { margin-top: .75rem; }
+      .event { grid-template-columns: 86px 1fr; }
+      .event .tag { grid-column: 2; justify-self: start; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { min-height: 590px; }
+      .masthead { margin-bottom: 4.4rem; }
+      .edition { font-size: .62rem; letter-spacing: .09em; }
+      .share { width: 42px; min-width: 42px; height: 42px; padding: 0; font-size: 0; }
+      .share::after { content: "↗"; font-size: 1rem; }
+      h1 { font-size: clamp(3.35rem, 15.5vw, 4.2rem); }
+      .kicker, .hero-deck { overflow-wrap: anywhere; }
+      .hero-deck { font-size: .97rem; }
+      .signal-grid, .weather-grid, .rec-grid { grid-template-columns: 1fr; }
+      .signal { min-height: auto; }
+      .weather { display: grid; grid-template-columns: 1fr auto; }
+      .weather .temp { grid-column: 1; }
+      .weather .weather-note { grid-column: 1 / -1; }
+      .timeline { margin-left: 0; }
+      .timeline::before { left: 13px; }
+      .day-block { padding-left: 2.7rem; }
+      .day-dot { left: 1px; }
+      .event { grid-template-columns: 1fr; gap: .3rem; }
+      .event .tag { grid-column: 1; }
+      .route-note { margin-left: 2.7rem; }
+      .callout { grid-template-columns: 1fr; }
+      .sources .source-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to planner</a>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="masthead">
+        <div class="edition"><span class="dot"></span> Pocket edition · Vol. 091126</div>
+        <button class="share" id="shareBtn" type="button">Share ↗</button>
+      </div>
+      <p class="kicker">Friends getting married. City getting eaten.</p>
+      <h1>CHICAGO<br><em>Field Notes</em></h1>
+      <p class="hero-deck">A low-stress wedding-weekend playbook: the fixed plans, the weather move, what to pack, and the food detours worth making.</p>
+      <div class="hero-meta">
+        <span class="pill">SEP 11–13 · CDT</span>
+        <span class="pill">FULTON MARKET BASE</span>
+        <span class="pill alert">DRESS SOCKS: BUY THERE</span>
+      </div>
+    </div>
+    <div class="track" aria-hidden="true"><span></span><span></span><span></span></div>
+  </header>
+
+  <main id="main">
+    <div class="base-card card">
+      <div class="base-grid">
+        <div class="base-info">
+          <div class="hotel-mark" aria-hidden="true">N</div>
+          <div>
+            <span class="eyebrow">Home base</span>
+            <h2>Nobu Hotel Chicago</h2>
+            <p>155 N Peoria St · Fulton Market</p>
+          </div>
+        </div>
+        <div class="button-row">
+          <a class="btn dark" href="https://www.google.com/maps/search/?api=1&amp;query=Nobu+Hotel+Chicago+155+N+Peoria+St+Chicago+IL+60607" target="_blank" rel="noopener">Open map</a>
+          <a class="btn" href="https://www.nobuhotels.com/chicago/" target="_blank" rel="noopener">Hotel site</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="now" aria-labelledby="now-title">
+      <div class="section-head">
+        <div><span class="eyebrow">The short version</span><h2 id="now-title">Three things.</h2></div>
+        <p>Do these and the weekend basically runs itself.</p>
+      </div>
+      <div class="signal-grid">
+        <article class="signal red card"><strong>Buy the socks.</strong><span>Friday is safest. Macy’s State Street is the sure bet; Suitsupply is your Saturday backup by Carmine’s.</span></article>
+        <article class="signal card"><strong>Leave Nobu at 3:50 Sunday.</strong><span>That protects the couple’s requested 4:30–4:45 arrival for a sharp 5pm ceremony.</span></article>
+        <article class="signal card"><strong>Pack one light layer.</strong><span>Warm afternoons; mid-60s at night. No heavy coat. A packable layer is enough.</span></article>
+      </div>
+    </section>
+
+    <section id="weather" aria-labelledby="weather-title">
+      <div class="section-head">
+        <div><span class="eyebrow">Forecast · Nobu / West Loop</span><h2 id="weather-title">City weather.</h2></div>
+        <p>NWS forecast checked Sep 10. No active weather alerts at check time.</p>
+      </div>
+      <div class="weather-grid">
+        <article class="weather card" data-date="2026-09-11">
+          <div class="weather-top"><span class="weather-day">Friday 11</span><span class="weather-icon" aria-label="Sunny">☀️</span></div>
+          <div class="temp">76° <small>/ 65°</small></div>
+          <div class="weather-note">Sunny · light SE wind · 0% daytime rain</div>
+        </article>
+        <article class="weather card" data-date="2026-09-12">
+          <div class="weather-top"><span class="weather-day">Saturday 12</span><span class="weather-icon" aria-label="Mostly sunny">🌤️</span></div>
+          <div class="temp">83° <small>/ 66°</small></div>
+          <div class="weather-note">Mostly sunny · SW gusts up to 20 mph · welcome party around 82°</div>
+        </article>
+        <article class="weather card" data-date="2026-09-13">
+          <div class="weather-top"><span class="weather-day">Sunday 13</span><span class="weather-icon" aria-label="Partly sunny">⛅</span></div>
+          <div class="temp">75° <small>/ 68°</small></div>
+          <div class="weather-note">Partly sunny · ceremony around 73° · slight shower chance only after 1am</div>
+        </article>
+      </div>
+      <div class="forecast-note"><span>↗</span><span>Pack for warmth plus air-conditioning: breathable daytime clothes, comfortable walking shoes, sunglasses, and one light overshirt/jacket. <a href="https://forecast.weather.gov/MapClick.php?lat=41.8841&amp;lon=-87.6496" target="_blank" rel="noopener">Refresh the official forecast</a>.</span></div>
+    </section>
+
+    <section id="plan" aria-labelledby="plan-title">
+      <div class="section-head">
+        <div><span class="eyebrow">The run of show</span><h2 id="plan-title">Weekend line.</h2></div>
+        <p>Official events are red-tagged. Leave times are suggested buffers, not reservations.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="day-block">
+          <span class="day-dot" aria-hidden="true"></span>
+          <h3>Friday <small>Land, orient, get the tiny mission done</small></h3>
+          <article class="event card">
+            <div class="event-time">ON ARRIVAL</div>
+            <div><h4>Drop bags at Nobu</h4><p>Switch the clock to Chicago time. Fulton Market is walkable and full of easy first moves.</p></div>
+            <span class="tag fixed">Base</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">BEFORE 7PM</div>
+            <div><h4>Dress-sock acquisition</h4><p>Macy’s State Street is the dependable option. If you punt, Suitsupply by Carmine’s is open until 7pm Saturday.</p></div>
+            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Nobu+Hotel+Chicago,+155+N+Peoria+St,+Chicago,+IL&amp;destination=Macy%27s,+111+N+State+St,+Chicago,+IL&amp;travelmode=transit" target="_blank" rel="noopener">Route</a>
+          </article>
+          <article class="event card">
+            <div class="event-time">FLEX</div>
+            <div><h4>Pick one Chicago move</h4><p>Cubs at 1:20 if timing works, a 90-minute architecture cruise, or just Good Ambler + a West Loop wander.</p></div>
+            <span class="tag">Optional</span>
+          </article>
+        </div>
+
+        <div class="day-block">
+          <span class="day-dot" aria-hidden="true"></span>
+          <h3>Saturday <small>Hot, breezy, social</small></h3>
+          <article class="event card">
+            <div class="event-time">8–11AM</div>
+            <div><h4>Open slot: market, cruise, or sleep</h4><p>Green City Market is the food-person choice. The early architecture cruise is the first-timer choice.</p></div>
+            <span class="tag">Optional</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">1:45PM</div>
+            <div><h4>Hotel reset</h4><p>Shower, hydrate, sunscreen. Smart casual works for the beer-garden welcome party; the site doesn’t state a Saturday dress code.</p></div>
+            <span class="tag fixed">Buffer</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">2:20PM</div>
+            <div><h4>Rideshare to Park &amp; Field</h4><p>Estimate 20–30 minutes; give traffic room.</p></div>
+            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Nobu+Hotel+Chicago,+155+N+Peoria+St,+Chicago,+IL&amp;destination=Park+%26+Field,+3509+W+Fullerton+Ave,+Chicago,+IL&amp;travelmode=driving" target="_blank" rel="noopener">Route</a>
+          </article>
+          <article class="event card">
+            <div class="event-time">3–5PM</div>
+            <div><h4>Welcome Party · Park &amp; Field</h4><p>Light apps and drinks provided. Forecast: roughly 82–83°, mostly sunny and breezy.</p></div>
+            <span class="tag official">Official</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">AFTER 5PM</div>
+            <div><h4>Carmine’s with friends</h4><p>1037 N Rush St. Roughly 20–30 minutes from Park &amp; Field by rideshare; reservation time still rules.</p></div>
+            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Park+%26+Field,+3509+W+Fullerton+Ave,+Chicago,+IL&amp;destination=Carmine%27s,+1037+N+Rush+St,+Chicago,+IL&amp;travelmode=driving" target="_blank" rel="noopener">Route</a>
+          </article>
+        </div>
+
+        <div class="day-block">
+          <span class="day-dot" aria-hidden="true"></span>
+          <h3>Sunday <small>Keep the daytime easy; save your legs</small></h3>
+          <article class="event card">
+            <div class="event-time">9AM–1:45PM</div>
+            <div><h4>Best open slot</h4><p>Choose one: Lula Cafe brunch, Renegade Craft Fair, or a short 606 walk. Don’t stack all three.</p></div>
+            <span class="tag">Optional</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">2:30PM</div>
+            <div><h4>Suit-up at Nobu</h4><p>Cocktail attire: suit, dress shirt, belt, dress shoes, and the newly acquired socks. Steam and lint-roll now.</p></div>
+            <span class="tag fixed">Protected</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">3:50PM</div>
+            <div><h4>Leave for Chief O’Neill’s</h4><p>Target arrival 4:30–4:45pm. Street parking exists, but the couple recommends rideshare.</p></div>
+            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Nobu+Hotel+Chicago,+155+N+Peoria+St,+Chicago,+IL&amp;destination=Chief+O%27Neill%27s,+3471+N+Elston+Ave,+Chicago,+IL&amp;travelmode=driving" target="_blank" rel="noopener">Route</a>
+          </article>
+          <article class="event card">
+            <div class="event-time">5–5:30PM</div>
+            <div><h4>Ceremony</h4><p>Starts at 5pm sharp. Unplugged ceremony: no guest photos during the vows.</p></div>
+            <span class="tag official">Official</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">5:30–9:30</div>
+            <div><h4>Cocktail hour + reception</h4><p>Everything stays at Chief O’Neill’s beer garden. Sunset is around 7pm; the low is 68°.</p></div>
+            <span class="tag official">Official</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">9:30–11:30</div>
+            <div><h4>After Party · Pizza Lobo</h4><p>3000 W Fullerton Ave. About 10–15 minutes by rideshare from the reception.</p></div>
+            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Chief+O%27Neill%27s,+3471+N+Elston+Ave,+Chicago,+IL&amp;destination=Pizza+Lobo,+3000+W+Fullerton+Ave,+Chicago,+IL&amp;travelmode=driving" target="_blank" rel="noopener">Route</a>
+          </article>
+        </div>
+      </div>
+      <p class="route-note"><strong>Rule:</strong> Chicago traffic is the chaos variable. Check the live route before each rideshare.</p>
+    </section>
+
+    <section id="pack" aria-labelledby="pack-title">
+      <div class="section-head">
+        <div><span class="eyebrow">Assumes Fri–Mon · 3 nights</span><h2 id="pack-title">Pack like a pro.</h2></div>
+        <p>The checklist saves on this device. Quantities flex if your flight dates differ.</p>
+      </div>
+
+      <div class="pack-layout">
+        <aside class="mission card">
+          <span class="eyebrow" style="color:var(--blue)">The one errand</span>
+          <h3>Operation: socks.</h3>
+          <p>Do it Friday, before the weekend gets loud.</p>
+          <div class="errand"><strong>Macy’s State Street</strong><span>111 N State St · full men’s department</span></div>
+          <div class="button-row" style="justify-content:flex-start">
+            <a class="btn small" href="https://www.macys.com/stores/il/chicago/mens_clothing_215.html" target="_blank" rel="noopener">Store info</a>
+            <a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Macy%27s+111+N+State+St+Chicago+IL" target="_blank" rel="noopener">Map</a>
+          </div>
+          <div style="height:.8rem"></div>
+          <details>
+            <summary>Backup by Carmine’s</summary>
+            <div class="detail-body">Suitsupply, 945 N Rush St · open until 7pm Saturday. It’s about a block from dinner; product stock can vary.</div>
+          </details>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Packed</span><span id="packCount">0 / 0</span></div>
+            <div class="progress-bar" aria-hidden="true"><span id="packProgress"></span></div>
+          </div>
+          <button class="btn small" id="resetPack" type="button" style="margin-top:1rem">Reset checks</button>
+        </aside>
+
+        <div class="check-groups" id="packingList">
+          <div class="check-group card">
+            <h3>Wedding kit</h3>
+            <label class="check"><input type="checkbox" data-pack="suit" checked><span>Suit</span><small class="qty">PACKED</small></label>
+            <label class="check"><input type="checkbox" data-pack="dress-shirt"><span>Dress shirt</span><small class="qty">1</small></label>
+            <label class="check"><input type="checkbox" data-pack="dress-socks"><span>Dress socks</span><small class="buy">Buy there</small></label>
+            <label class="check"><input type="checkbox" data-pack="dress-shoes"><span>Dress shoes</span><small class="qty">1 pair</small></label>
+            <label class="check"><input type="checkbox" data-pack="belt"><span>Dress belt</span><small class="qty">1</small></label>
+            <label class="check"><input type="checkbox" data-pack="tie"><span>Tie / pocket square, if wearing</span><small class="qty">1</small></label>
+            <label class="check"><input type="checkbox" data-pack="wedding-tools"><span>Collar stays + lint roller + stain pen</span><small class="qty">MINI</small></label>
+          </div>
+
+          <div class="check-group card">
+            <h3>Clothes</h3>
+            <label class="check"><input type="checkbox" data-pack="casual-tops"><span>Casual shirts / tees</span><small class="qty">3</small></label>
+            <label class="check"><input type="checkbox" data-pack="welcome-look"><span>Welcome-party shirt + chinos</span><small class="qty">1 look</small></label>
+            <label class="check"><input type="checkbox" data-pack="shorts"><span>Shorts for Saturday heat</span><small class="qty">1</small></label>
+            <label class="check"><input type="checkbox" data-pack="layer"><span>Light jacket or overshirt</span><small class="qty">1</small></label>
+            <label class="check"><input type="checkbox" data-pack="sneakers"><span>Comfortable walking sneakers</span><small class="qty">1 pair</small></label>
+            <label class="check"><input type="checkbox" data-pack="underwear"><span>Underwear</span><small class="qty">4</small></label>
+            <label class="check"><input type="checkbox" data-pack="casual-socks"><span>Casual socks</span><small class="qty">3</small></label>
+            <label class="check"><input type="checkbox" data-pack="sleep"><span>Sleepwear</span><small class="qty">1</small></label>
+          </div>
+
+          <div class="check-group card">
+            <h3>Weather + grooming</h3>
+            <label class="check"><input type="checkbox" data-pack="sunglasses"><span>Sunglasses</span><small class="qty">Sunny</small></label>
+            <label class="check"><input type="checkbox" data-pack="sunscreen"><span>Travel sunscreen</span><small class="qty">SPF</small></label>
+            <label class="check"><input type="checkbox" data-pack="umbrella"><span>Compact umbrella, especially if leaving Monday</span><small class="qty">Optional</small></label>
+            <label class="check"><input type="checkbox" data-pack="toiletries"><span>Toiletries + deodorant + fragrance</span><small class="qty">KIT</small></label>
+            <label class="check"><input type="checkbox" data-pack="meds"><span>Meds / vitamins</span><small class="qty">TRIP</small></label>
+            <label class="check"><input type="checkbox" data-pack="blister"><span>Blister bandages + pain reliever</span><small class="qty">MINI</small></label>
+          </div>
+
+          <div class="check-group card">
+            <h3>Travel brain</h3>
+            <label class="check"><input type="checkbox" data-pack="id"><span>ID + wallet</span><small class="qty">DO NOT FORGET</small></label>
+            <label class="check"><input type="checkbox" data-pack="phone"><span>Phone + charger</span><small class="qty">1</small></label>
+            <label class="check"><input type="checkbox" data-pack="battery"><span>Battery pack</span><small class="qty">1</small></label>
+            <label class="check"><input type="checkbox" data-pack="headphones"><span>Headphones</span><small class="qty">1</small></label>
+            <label class="check"><input type="checkbox" data-pack="mints"><span>Mints / gum</span><small class="qty">POCKET</small></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="eat" aria-labelledby="eat-title">
+      <div class="section-head">
+        <div><span class="eyebrow">Pescatarian-aware · worth your time</span><h2 id="eat-title">Eat on purpose.</h2></div>
+        <p>One neighborhood layup, one ambitious breakfast, one excellent drink—not six reservations.</p>
+      </div>
+      <div class="filters" data-target="foodGrid">
+        <button class="filter active" type="button" data-filter="all">All food</button>
+        <button class="filter" type="button" data-filter="near">Near Nobu</button>
+        <button class="filter" type="button" data-filter="day">Daytime</button>
+        <button class="filter" type="button" data-filter="night">Night</button>
+      </div>
+      <div class="rec-grid" id="foodGrid">
+        <article class="rec card" data-cats="near day">
+          <div class="rec-top"><span class="rec-icon">🥐</span><span class="rec-fit">Zero-friction</span></div>
+          <h3>Good Ambler</h3>
+          <p>Excellent pastry and coffee one block north of the hotel. Weekend hours are 8am–3pm. The right first or recovery move.</p>
+          <div class="rec-meta"><span class="mini">1 block</span><span class="mini">Breakfast</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.goodambler.com/visit" target="_blank" rel="noopener">Source</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Good+Ambler+216+N+Peoria+St+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="near day night">
+          <div class="rec-top"><span class="rec-icon">🫒</span><span class="rec-fit">Best nearby meal</span></div>
+          <h3>avec · West Loop</h3>
+          <p>Mediterranean small plates with real range for vegetables and fish. Easy walk east from Nobu; built for ordering a few things.</p>
+          <div class="rec-meta"><span class="mini">~12 min walk</span><span class="mini">Plant-forward</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.avecrestaurant.com/" target="_blank" rel="noopener">Source</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=avec+West+Loop+615+W+Randolph+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="near night">
+          <div class="rec-top"><span class="rec-icon">🍸</span><span class="rec-fit">Friday night</span></div>
+          <h3>Kumiko</h3>
+          <p>A serious Japanese cocktail bar with thoughtful zero-proof drinks and precise snacks. Great for one beautifully executed stop.</p>
+          <div class="rec-meta"><span class="mini">~10 min walk</span><span class="mini">Reserve</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://barkumiko.com/visitus" target="_blank" rel="noopener">Source</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Kumiko+630+W+Lake+St+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="night">
+          <div class="rec-top"><span class="rec-icon">🥬</span><span class="rec-fit">Food-person flex</span></div>
+          <h3>Maxwells Trading</h3>
+          <p>Inventive, globally inflected sharing food. Current menu includes silken tofu and fish alongside the meat dishes—easy to build your kind of meal.</p>
+          <div class="rec-meta"><span class="mini">Short rideshare</span><span class="mini">Reserve</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.maxwellstrading.com/food" target="_blank" rel="noopener">Menu</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Maxwells+Trading+1516+W+Carroll+Ave+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="day">
+          <div class="rec-top"><span class="rec-icon">☕</span><span class="rec-fit">Ambitious morning</span></div>
+          <h3>Kasama</h3>
+          <p>Destination Filipino bakery and daytime counter service, 9am–3pm Wed–Sun; kitchen/dining can hit capacity by 2. Go early and expect a line.</p>
+          <div class="rec-meta"><span class="mini">Short rideshare</span><span class="mini">Earlier wins</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.kasamachicago.com/" target="_blank" rel="noopener">Source</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Kasama+1001+N+Winchester+Ave+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="day">
+          <div class="rec-top"><span class="rec-icon">🍳</span><span class="rec-fit">Sunday brunch</span></div>
+          <h3>Lula Cafe</h3>
+          <p>A Chicago institution with a seasonal, creative menu. Daytime is first come, first served. Go around 9–10am and keep Sunday simple.</p>
+          <div class="rec-meta"><span class="mini">Logan Square</span><span class="mini">Walk-in daytime</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.lulacafe.com/faq/" target="_blank" rel="noopener">Source</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Lula+Cafe+2537+N+Kedzie+Blvd+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="play" aria-labelledby="play-title">
+      <div class="section-head">
+        <div><span class="eyebrow">Choose your own Chicago</span><h2 id="play-title">Side quests.</h2></div>
+        <p>The best fits are highlighted by timing. Check live availability before committing.</p>
+      </div>
+      <div class="filters" data-target="playGrid">
+        <button class="filter active" type="button" data-filter="all">All ideas</button>
+        <button class="filter" type="button" data-filter="friday">Friday</button>
+        <button class="filter" type="button" data-filter="saturday">Saturday</button>
+        <button class="filter" type="button" data-filter="sunday">Sunday</button>
+      </div>
+      <div class="rec-grid" id="playGrid">
+        <article class="rec card" data-cats="friday">
+          <div class="rec-top"><span class="rec-icon">⚾</span><span class="rec-fit">Fri · 1:20pm</span></div>
+          <h3>Cubs vs. Pirates</h3>
+          <p>A genuine only-this-weekend option at Wrigley. First pitch is 1:20pm Friday; only choose it if your arrival leaves real breathing room.</p>
+          <div class="rec-meta"><span class="mini">3–4 hours</span><span class="mini">Tickets</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.mlb.com/cubs/schedule/2026-09/list" target="_blank" rel="noopener">Schedule</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Wrigley+Field+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="friday saturday">
+          <div class="rec-top"><span class="rec-icon">🏙️</span><span class="rec-fit">Best first-timer move</span></div>
+          <h3>CAC River Cruise</h3>
+          <p>The classic, and deservedly so: 90 minutes of Chicago architecture from the river. Best windows are Friday or the early Saturday sailing.</p>
+          <div class="rec-meta"><span class="mini">90 minutes</span><span class="mini">Book ahead</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.architecture.org/city-tours/river-cruise" target="_blank" rel="noopener">Official</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Chicago%27s+First+Lady+Cruises+112+E+Wacker+Dr" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="saturday">
+          <div class="rec-top"><span class="rec-icon">🥕</span><span class="rec-fit">Sat · 7am–1pm</span></div>
+          <h3>Green City Market</h3>
+          <p>Lincoln Park’s producer market is the Saturday-morning food move. Aim 8:30–10:30, eat as you go, then return to the hotel with buffer.</p>
+          <div class="rec-meta"><span class="mini">2 hours</span><span class="mini">Outdoor</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.greencitymarket.org/market/details/lincoln" target="_blank" rel="noopener">Official</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Green+City+Market+Lincoln+Park+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="saturday sunday">
+          <div class="rec-top"><span class="rec-icon">🎨</span><span class="rec-fit">Best Sun · 11–1:45</span></div>
+          <h3>Renegade Craft Fair</h3>
+          <p>400+ artists on Division between Damen and Ashland, 11am–7pm Saturday and Sunday. Sunday is your cleanest window.</p>
+          <div class="rec-meta"><span class="mini">Free</span><span class="mini">Wicker Park</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.renegadecraft.com/event/chicago-fall/" target="_blank" rel="noopener">Official</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Division+St+and+Damen+Ave+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="saturday sunday">
+          <div class="rec-top"><span class="rec-icon">🚶</span><span class="rec-fit">Low-commitment</span></div>
+          <h3>The 606</h3>
+          <p>A 2.7-mile elevated trail through Bucktown and Logan Square, open 6am–11pm. Do a short out-and-back, not the whole thing in wedding shoes.</p>
+          <div class="rec-meta"><span class="mini">45–90 min</span><span class="mini">Free</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.chicagoparkdistrict.com/visit-606" target="_blank" rel="noopener">Official</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=The+606+Bloomingdale+Trail+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+        <article class="rec card" data-cats="friday saturday sunday">
+          <div class="rec-top"><span class="rec-icon">🖼️</span><span class="rec-fit">Rain / culture save</span></div>
+          <h3>Art Institute</h3>
+          <p>The high-quality indoor fallback. Give it two focused hours instead of trying to conquer the collection.</p>
+          <div class="rec-meta"><span class="mini">2–3 hours</span><span class="mini">Tickets</span></div>
+          <div class="rec-actions"><a class="btn small" href="https://www.artic.edu/visit" target="_blank" rel="noopener">Official</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Art+Institute+of+Chicago" target="_blank" rel="noopener">Map</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="notes" aria-labelledby="notes-title">
+      <div class="section-head">
+        <div><span class="eyebrow">Tiny truths</span><h2 id="notes-title">Good to know.</h2></div>
+      </div>
+      <div class="callout card">
+        <div><h3>Don’t overschedule Sunday.</h3><p>The ceremony and after-party run 4:30pm–11:30pm. One daytime idea, lunch, then a real hotel reset is the winning structure.</p></div>
+        <a class="btn dark" href="#plan">See Sunday</a>
+      </div>
+      <div class="sources card" style="margin-top:.8rem">
+        <details open>
+          <summary>Sources &amp; live links</summary>
+          <div class="detail-body source-grid">
+            <p><a href="https://www.zola.com/wedding/kelseyandmark2026/event" target="_blank" rel="noopener">Wedding schedule</a><br>Official times, venues, and arrival guidance.</p>
+            <p><a href="https://www.zola.com/wedding/kelseyandmark2026/faq" target="_blank" rel="noopener">Wedding FAQ</a><br>Cocktail attire, rideshare, unplugged ceremony.</p>
+            <p><a href="https://forecast.weather.gov/MapClick.php?lat=41.8841&amp;lon=-87.6496" target="_blank" rel="noopener">National Weather Service</a><br>Point forecast for Nobu / West Loop.</p>
+            <p><a href="https://www.parkandfieldchicago.com/" target="_blank" rel="noopener">Park &amp; Field</a> · <a href="https://chiefoneillspub.com/" target="_blank" rel="noopener">Chief O’Neill’s</a> · <a href="https://www.pizzalobo.com/" target="_blank" rel="noopener">Pizza Lobo</a><br>Official venue sites.</p>
+            <p><a href="https://carminesitalian.com/chicago/home/" target="_blank" rel="noopener">Carmine’s Chicago</a><br>Your Saturday post-welcome dinner.</p>
+            <p><a href="https://suitsupply.com/en-us/stores/chicago" target="_blank" rel="noopener">Suitsupply Chicago</a> · <a href="https://www.macys.com/stores/il/chicago/mens_clothing_215.html" target="_blank" rel="noopener">Macy’s Men’s</a><br>Dress-sock mission sources.</p>
+            <p><a href="https://www.renegadecraft.com/event/chicago-fall/" target="_blank" rel="noopener">Renegade Craft</a> · <a href="https://www.greencitymarket.org/market/details/lincoln" target="_blank" rel="noopener">Green City Market</a> · <a href="https://www.architecture.org/city-tours/river-cruise" target="_blank" rel="noopener">CAC Cruise</a></p>
+            <p><a href="https://www.mlb.com/cubs/schedule/2026-09/list" target="_blank" rel="noopener">Cubs schedule</a> · <a href="https://www.chicagoparkdistrict.com/visit-606" target="_blank" rel="noopener">The 606</a> · <a href="https://www.artic.edu/visit" target="_blank" rel="noopener">Art Institute</a></p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Chicago Field Notes</strong> · Built for a very good weekend.<br>
+    Forecast and operating hours can change; tap the official source before heading out. Travel-time estimates are buffers, not guarantees. This page is unlisted and marked noindex, but it is not password-protected.
+  </footer>
+
+  <nav class="bottom-nav" aria-label="Planner navigation">
+    <a href="#now"><b>◎</b>Now</a>
+    <a href="#plan"><b>↳</b>Plan</a>
+    <a href="#pack"><b>✓</b>Pack</a>
+    <a href="#eat"><b>♨</b>Eat</a>
+    <a href="#play"><b>✦</b>Play</a>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Link copied</div>
+
+  <script>
+    const PACK_KEY = 'chicagoFieldNotesPackingV1';
+    const checks = [...document.querySelectorAll('[data-pack]')];
+    const countEl = document.getElementById('packCount');
+    const progressEl = document.getElementById('packProgress');
+
+    function loadPacking() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(PACK_KEY) || '{}');
+        checks.forEach(input => {
+          if (Object.prototype.hasOwnProperty.call(saved, input.dataset.pack)) input.checked = saved[input.dataset.pack];
+        });
+      } catch (_) {}
+      updatePacking(false);
+    }
+
+    function updatePacking(save = true) {
+      const state = {};
+      checks.forEach(input => state[input.dataset.pack] = input.checked);
+      if (save) localStorage.setItem(PACK_KEY, JSON.stringify(state));
+      const done = checks.filter(input => input.checked).length;
+      countEl.textContent = `${done} / ${checks.length}`;
+      progressEl.style.width = `${Math.round((done / checks.length) * 100)}%`;
+    }
+
+    checks.forEach(input => input.addEventListener('change', () => updatePacking(true)));
+    document.getElementById('resetPack').addEventListener('click', () => {
+      checks.forEach(input => input.checked = input.dataset.pack === 'suit');
+      updatePacking(true);
+    });
+    loadPacking();
+
+    document.querySelectorAll('.filters').forEach(group => {
+      const target = document.getElementById(group.dataset.target);
+      group.addEventListener('click', event => {
+        const button = event.target.closest('[data-filter]');
+        if (!button) return;
+        group.querySelectorAll('.filter').forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        target.querySelectorAll('[data-cats]').forEach(card => {
+          const cats = card.dataset.cats.split(' ');
+          card.classList.toggle('hidden', filter !== 'all' && !cats.includes(filter));
+        });
+      });
+    });
+
+    const toast = document.getElementById('toast');
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: document.title, text: 'Chicago wedding weekend field notes', url: location.href });
+        } else {
+          await navigator.clipboard.writeText(location.href);
+          showToast('Link copied');
+        }
+      } catch (_) {}
+    });
+
+    const chicagoDate = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(new Date());
+    document.querySelectorAll('[data-date]').forEach(card => card.classList.toggle('today', card.dataset.date === chicagoDate));
+
+    const sectionLinks = [...document.querySelectorAll('.bottom-nav a')];
+    const observed = sectionLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      sectionLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`));
+    }, { rootMargin: '-25% 0px -65%', threshold: [0, .2, .5] });
+    observed.forEach(section => observer.observe(section));
+
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
+  </script>
+</body>
+</html>
