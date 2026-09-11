@@ -1,4 +1,4 @@
-const CACHE = 'chicago-field-notes-v1';
+const CACHE = 'chicago-field-notes-v2';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {

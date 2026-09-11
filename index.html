@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#112e3b">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="description" content="A pocket field guide for a Chicago wedding weekend, September 11–13, 2026.">
+  <meta name="description" content="A pocket field guide for a Chicago wedding weekend, September 11–14, 2026.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <title>Chicago Field Notes · Wedding Weekend</title>
@@ -195,7 +195,7 @@
     .signal.red span { color: rgba(255,255,255,.82); }
     .signal.red::after { border-color: white; }
 
-    .weather-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+    .weather-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
     .weather { padding: 1.15rem; position: relative; overflow: hidden; }
     .weather.today { border: 2px solid var(--red); }
     .weather-top { display: flex; align-items: start; justify-content: space-between; gap: .5rem; }
@@ -204,6 +204,18 @@
     .temp { font-family: Georgia, serif; font-size: 2.7rem; letter-spacing: -.06em; margin: .65rem 0 .1rem; }
     .weather-note { color: var(--muted); font-size: .84rem; }
     .forecast-note { margin-top: .8rem; font-size: .84rem; color: var(--muted); display: flex; gap: .5rem; align-items: start; }
+
+    .flight-board { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; margin-bottom: 1.5rem; }
+    .flight { padding: 1.15rem; overflow: hidden; position: relative; }
+    .flight::after { content: ""; position: absolute; width: 96px; height: 96px; border: 20px solid var(--blue); border-radius: 50%; right: -50px; top: -48px; opacity: .35; }
+    .flight-label { color: var(--red); text-transform: uppercase; letter-spacing: .11em; font-size: .7rem; font-weight: 950; }
+    .flight-route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .75rem; margin: .8rem 0; }
+    .airport { font-family: Georgia, "Times New Roman", serif; font-size: 2.15rem; line-height: 1; letter-spacing: -.04em; }
+    .flight-line { height: 2px; background: var(--line); position: relative; }
+    .flight-line::after { content: "✈"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -54%); padding: 0 .4rem; background: var(--paper); font-size: .95rem; }
+    .flight-times { display: flex; justify-content: space-between; gap: 1rem; font-size: .82rem; font-weight: 850; }
+    .flight-times span:last-child { text-align: right; }
+    .flight-meta { margin: .75rem 0 0; color: var(--muted); font-size: .8rem; }
 
     .timeline { position: relative; margin-left: .75rem; }
     .timeline::before { content: ""; position: absolute; left: 18px; top: 1rem; bottom: 1rem; width: 4px; border-radius: 4px; background: linear-gradient(var(--blue), var(--red), var(--gold)); }
@@ -303,7 +315,7 @@
     @media (max-width: 800px) {
       .base-grid, .pack-layout { grid-template-columns: 1fr; }
       .button-row { justify-content: flex-start; }
-      .signal-grid, .weather-grid, .rec-grid { grid-template-columns: 1fr 1fr; }
+      .signal-grid, .weather-grid, .rec-grid, .flight-board { grid-template-columns: 1fr 1fr; }
       .mission { position: static; }
       .section-head { display: block; }
       .section-head p { margin-top: .75rem; }
@@ -320,7 +332,7 @@
       h1 { font-size: clamp(3.35rem, 15.5vw, 4.2rem); }
       .kicker, .hero-deck { overflow-wrap: anywhere; }
       .hero-deck { font-size: .97rem; }
-      .signal-grid, .weather-grid, .rec-grid { grid-template-columns: 1fr; }
+      .signal-grid, .weather-grid, .rec-grid, .flight-board { grid-template-columns: 1fr; }
       .signal { min-height: auto; }
       .weather { display: grid; grid-template-columns: 1fr auto; }
       .weather .temp { grid-column: 1; }
@@ -355,7 +367,7 @@
       <h1>CHICAGO<br><em>Field Notes</em></h1>
       <p class="hero-deck">A low-stress wedding-weekend playbook: the fixed plans, the weather move, what to pack, and the food detours worth making.</p>
       <div class="hero-meta">
-        <span class="pill">SEP 11–13 · CDT</span>
+        <span class="pill">SEP 11–14 · CDT</span>
         <span class="pill">FULTON MARKET BASE</span>
         <span class="pill alert">DRESS SOCKS: BUY THERE</span>
       </div>
@@ -387,9 +399,9 @@
         <p>Do these and the weekend basically runs itself.</p>
       </div>
       <div class="signal-grid">
-        <article class="signal red card"><strong>Buy the socks.</strong><span>Friday is safest. Macy’s State Street is the sure bet; Suitsupply is your Saturday backup by Carmine’s.</span></article>
+        <article class="signal red card"><strong>Buy the socks Saturday.</strong><span>Friday lands too late. Hit Macy’s State Street around 10am; Suitsupply by Carmine’s is the backup.</span></article>
         <article class="signal card"><strong>Leave Nobu at 3:50 Sunday.</strong><span>That protects the couple’s requested 4:30–4:45 arrival for a sharp 5pm ceremony.</span></article>
-        <article class="signal card"><strong>Pack one light layer.</strong><span>Warm afternoons; mid-60s at night. No heavy coat. A packable layer is enough.</span></article>
+        <article class="signal card"><strong>Leave for MDW at 11:45 Monday.</strong><span>Checkout is 11am; the 35–60 minute traffic buffer targets the airport around 12:30 for a 2:50 flight.</span></article>
       </div>
     </section>
 
@@ -401,21 +413,26 @@
       <div class="weather-grid">
         <article class="weather card" data-date="2026-09-11">
           <div class="weather-top"><span class="weather-day">Friday 11</span><span class="weather-icon" aria-label="Sunny">☀️</span></div>
-          <div class="temp">76° <small>/ 65°</small></div>
-          <div class="weather-note">Sunny · light SE wind · 0% daytime rain</div>
+          <div class="temp">76° <small>/ 66°</small></div>
+          <div class="weather-note">Sunny · mostly clear at night · a light layer works after landing</div>
         </article>
         <article class="weather card" data-date="2026-09-12">
           <div class="weather-top"><span class="weather-day">Saturday 12</span><span class="weather-icon" aria-label="Mostly sunny">🌤️</span></div>
-          <div class="temp">83° <small>/ 66°</small></div>
-          <div class="weather-note">Mostly sunny · SW gusts up to 20 mph · welcome party around 82°</div>
+          <div class="temp">84° <small>/ 66°</small></div>
+          <div class="weather-note">Mostly sunny · SW gusts up to 20 mph · welcome party around 82–84°</div>
         </article>
         <article class="weather card" data-date="2026-09-13">
-          <div class="weather-top"><span class="weather-day">Sunday 13</span><span class="weather-icon" aria-label="Partly sunny">⛅</span></div>
-          <div class="temp">75° <small>/ 68°</small></div>
-          <div class="weather-note">Partly sunny · ceremony around 73° · slight shower chance only after 1am</div>
+          <div class="weather-top"><span class="weather-day">Sunday 13</span><span class="weather-icon" aria-label="Mostly sunny">🌤️</span></div>
+          <div class="temp">74° <small>/ 64°</small></div>
+          <div class="weather-note">Mostly sunny · comfortable ceremony weather · slight rain chance overnight</div>
+        </article>
+        <article class="weather card" data-date="2026-09-14">
+          <div class="weather-top"><span class="weather-day">Monday 14</span><span class="weather-icon" aria-label="Slight chance of showers">🌦️</span></div>
+          <div class="temp">79°</div>
+          <div class="weather-note">Slight shower chance before 1pm · mostly cloudy by airport time · around 9–24% rain</div>
         </article>
       </div>
-      <div class="forecast-note"><span>↗</span><span>Pack for warmth plus air-conditioning: breathable daytime clothes, comfortable walking shoes, sunglasses, and one light overshirt/jacket. <a href="https://forecast.weather.gov/MapClick.php?lat=41.8841&amp;lon=-87.6496" target="_blank" rel="noopener">Refresh the official forecast</a>.</span></div>
+      <div class="forecast-note"><span>↗</span><span>Pack for warmth plus air-conditioning: breathable clothes, walking shoes, sunglasses, one light overshirt, and a compact umbrella for Monday morning. <a href="https://forecast.weather.gov/MapClick.php?lat=41.8841&amp;lon=-87.6496" target="_blank" rel="noopener">Refresh the official forecast</a>.</span></div>
     </section>
 
     <section id="plan" aria-labelledby="plan-title">
@@ -424,24 +441,39 @@
         <p>Official events are red-tagged. Leave times are suggested buffers, not reservations.</p>
       </div>
 
+      <div class="flight-board" aria-label="Flight details">
+        <article class="flight card">
+          <span class="flight-label">Friday · Southwest 153 · Nonstop</span>
+          <div class="flight-route"><strong class="airport">SMF</strong><span class="flight-line" aria-hidden="true"></span><strong class="airport">MDW</strong></div>
+          <div class="flight-times"><span>11:20am PT</span><span>5:15pm CT</span></div>
+          <p class="flight-meta">3h 55m · seat 14C · Choice Preferred</p>
+        </article>
+        <article class="flight card">
+          <span class="flight-label">Monday · Southwest 518 / 4474 · 1 stop</span>
+          <div class="flight-route"><strong class="airport">MDW</strong><span class="flight-line" aria-hidden="true"></span><strong class="airport">SMF</strong></div>
+          <div class="flight-times"><span>2:50pm CT</span><span>7:15pm PT</span></div>
+          <p class="flight-meta">6h 25m · change planes in SAN · seats 12C / 8C</p>
+        </article>
+      </div>
+
       <div class="timeline">
         <div class="day-block">
           <span class="day-dot" aria-hidden="true"></span>
-          <h3>Friday <small>Land, orient, get the tiny mission done</small></h3>
+          <h3>Friday <small>Fly, land, exhale</small></h3>
           <article class="event card">
-            <div class="event-time">ON ARRIVAL</div>
-            <div><h4>Drop bags at Nobu</h4><p>Switch the clock to Chicago time. Fulton Market is walkable and full of easy first moves.</p></div>
+            <div class="event-time">11:20AM PT</div>
+            <div><h4>Southwest 153 departs SMF</h4><p>Nonstop to Midway. Scheduled flight time: 3 hours, 55 minutes.</p></div>
+            <span class="tag fixed">Flight</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">5:15PM CT</div>
+            <div><h4>Touch down at MDW</h4><p>Allow roughly 35–60 minutes for deplaning, bags, and the rideshare to Fulton Market.</p></div>
+            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Chicago+Midway+International+Airport&amp;destination=Nobu+Hotel+Chicago,+155+N+Peoria+St,+Chicago,+IL&amp;travelmode=driving" target="_blank" rel="noopener">Route</a>
+          </article>
+          <article class="event card">
+            <div class="event-time">~6:30–7:15</div>
+            <div><h4>Check in + keep dinner easy</h4><p>Drop bags at Nobu, switch to Chicago time, and stay local. Kumiko or avec are the smart nearby options if you still have energy.</p></div>
             <span class="tag fixed">Base</span>
-          </article>
-          <article class="event card">
-            <div class="event-time">BEFORE 7PM</div>
-            <div><h4>Dress-sock acquisition</h4><p>Macy’s State Street is the dependable option. If you punt, Suitsupply by Carmine’s is open until 7pm Saturday.</p></div>
-            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Nobu+Hotel+Chicago,+155+N+Peoria+St,+Chicago,+IL&amp;destination=Macy%27s,+111+N+State+St,+Chicago,+IL&amp;travelmode=transit" target="_blank" rel="noopener">Route</a>
-          </article>
-          <article class="event card">
-            <div class="event-time">FLEX</div>
-            <div><h4>Pick one Chicago move</h4><p>Cubs at 1:20 if timing works, a 90-minute architecture cruise, or just Good Ambler + a West Loop wander.</p></div>
-            <span class="tag">Optional</span>
           </article>
         </div>
 
@@ -449,9 +481,14 @@
           <span class="day-dot" aria-hidden="true"></span>
           <h3>Saturday <small>Hot, breezy, social</small></h3>
           <article class="event card">
-            <div class="event-time">8–11AM</div>
-            <div><h4>Open slot: market, cruise, or sleep</h4><p>Green City Market is the food-person choice. The early architecture cruise is the first-timer choice.</p></div>
+            <div class="event-time">8–9:30AM</div>
+            <div><h4>Breakfast or one quick wander</h4><p>Use Nobu’s included breakfast, walk to Good Ambler, or start early at Green City Market. Don’t let it eat the sock buffer.</p></div>
             <span class="tag">Optional</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">10–11AM</div>
+            <div><h4>Operation: dress socks</h4><p>Macy’s State Street is the dependable first stop. Suitsupply on Rush is the dinner-adjacent backup.</p></div>
+            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Nobu+Hotel+Chicago,+155+N+Peoria+St,+Chicago,+IL&amp;destination=Macy%27s,+111+N+State+St,+Chicago,+IL&amp;travelmode=transit" target="_blank" rel="noopener">Route</a>
           </article>
           <article class="event card">
             <div class="event-time">1:45PM</div>
@@ -489,6 +526,11 @@
             <span class="tag fixed">Protected</span>
           </article>
           <article class="event card">
+            <div class="event-time">2:50PM</div>
+            <div><h4>Check in for Monday’s flight</h4><p>That’s the 24-hour mark for Southwest 518. Do it from the hotel before the wedding takes over.</p></div>
+            <a class="btn small" href="https://www.southwest.com/air/check-in/" target="_blank" rel="noopener">Check in</a>
+          </article>
+          <article class="event card">
             <div class="event-time">3:50PM</div>
             <div><h4>Leave for Chief O’Neill’s</h4><p>Target arrival 4:30–4:45pm. Street parking exists, but the couple recommends rideshare.</p></div>
             <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Nobu+Hotel+Chicago,+155+N+Peoria+St,+Chicago,+IL&amp;destination=Chief+O%27Neill%27s,+3471+N+Elston+Ave,+Chicago,+IL&amp;travelmode=driving" target="_blank" rel="noopener">Route</a>
@@ -509,6 +551,31 @@
             <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Chief+O%27Neill%27s,+3471+N+Elston+Ave,+Chicago,+IL&amp;destination=Pizza+Lobo,+3000+W+Fullerton+Ave,+Chicago,+IL&amp;travelmode=driving" target="_blank" rel="noopener">Route</a>
           </article>
         </div>
+
+        <div class="day-block">
+          <span class="day-dot" aria-hidden="true"></span>
+          <h3>Monday <small>Breakfast, checkout, homeward</small></h3>
+          <article class="event card">
+            <div class="event-time">8–10:30AM</div>
+            <div><h4>Breakfast + close the suitcase</h4><p>Use the hotel breakfast and any remaining property credit, then check the room like a detective: charger, suit bag, bathroom, safe.</p></div>
+            <span class="tag">Easy</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">11AM</div>
+            <div><h4>Checkout</h4><p>Nobu’s confirmed checkout time. If you want one last nearby coffee, leave bags with the front desk and keep an eye on the sky.</p></div>
+            <span class="tag fixed">Fixed</span>
+          </article>
+          <article class="event card">
+            <div class="event-time">11:45AM</div>
+            <div><h4>Rideshare to Midway</h4><p>Conservative target: reach MDW around 12:30pm, roughly 2 hours 20 minutes before departure. Allow 35–60 minutes and check live traffic.</p></div>
+            <a class="btn small" href="https://www.google.com/maps/dir/?api=1&amp;origin=Nobu+Hotel+Chicago,+155+N+Peoria+St,+Chicago,+IL&amp;destination=Chicago+Midway+International+Airport&amp;travelmode=driving" target="_blank" rel="noopener">Live route</a>
+          </article>
+          <article class="event card">
+            <div class="event-time">2:50PM CT</div>
+            <div><h4>Southwest 518 / 4474 to SMF</h4><p>One stop and a plane change in San Diego. Scheduled Sacramento arrival: 7:15pm PT.</p></div>
+            <a class="btn small" href="https://www.southwest.com/air/flight-status/" target="_blank" rel="noopener">Flight status</a>
+          </article>
+        </div>
       </div>
       <p class="route-note"><strong>Rule:</strong> Chicago traffic is the chaos variable. Check the live route before each rideshare.</p>
     </section>
@@ -523,7 +590,7 @@
         <aside class="mission card">
           <span class="eyebrow" style="color:var(--blue)">The one errand</span>
           <h3>Operation: socks.</h3>
-          <p>Do it Friday, before the weekend gets loud.</p>
+          <p>Do it Saturday around 10am. Friday’s 5:15 landing makes the old plan too tight.</p>
           <div class="errand"><strong>Macy’s State Street</strong><span>111 N State St · full men’s department</span></div>
           <div class="button-row" style="justify-content:flex-start">
             <a class="btn small" href="https://www.macys.com/stores/il/chicago/mens_clothing_215.html" target="_blank" rel="noopener">Store info</a>
@@ -569,7 +636,7 @@
             <h3>Weather + grooming</h3>
             <label class="check"><input type="checkbox" data-pack="sunglasses"><span>Sunglasses</span><small class="qty">Sunny</small></label>
             <label class="check"><input type="checkbox" data-pack="sunscreen"><span>Travel sunscreen</span><small class="qty">SPF</small></label>
-            <label class="check"><input type="checkbox" data-pack="umbrella"><span>Compact umbrella, especially if leaving Monday</span><small class="qty">Optional</small></label>
+            <label class="check"><input type="checkbox" data-pack="umbrella"><span>Compact umbrella for Monday morning</span><small class="qty">Pack</small></label>
             <label class="check"><input type="checkbox" data-pack="toiletries"><span>Toiletries + deodorant + fragrance</span><small class="qty">KIT</small></label>
             <label class="check"><input type="checkbox" data-pack="meds"><span>Meds / vitamins</span><small class="qty">TRIP</small></label>
             <label class="check"><input type="checkbox" data-pack="blister"><span>Blister bandages + pain reliever</span><small class="qty">MINI</small></label>
@@ -651,22 +718,14 @@
       </div>
       <div class="filters" data-target="playGrid">
         <button class="filter active" type="button" data-filter="all">All ideas</button>
-        <button class="filter" type="button" data-filter="friday">Friday</button>
         <button class="filter" type="button" data-filter="saturday">Saturday</button>
         <button class="filter" type="button" data-filter="sunday">Sunday</button>
       </div>
       <div class="rec-grid" id="playGrid">
-        <article class="rec card" data-cats="friday">
-          <div class="rec-top"><span class="rec-icon">⚾</span><span class="rec-fit">Fri · 1:20pm</span></div>
-          <h3>Cubs vs. Pirates</h3>
-          <p>A genuine only-this-weekend option at Wrigley. First pitch is 1:20pm Friday; only choose it if your arrival leaves real breathing room.</p>
-          <div class="rec-meta"><span class="mini">3–4 hours</span><span class="mini">Tickets</span></div>
-          <div class="rec-actions"><a class="btn small" href="https://www.mlb.com/cubs/schedule/2026-09/list" target="_blank" rel="noopener">Schedule</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Wrigley+Field+Chicago" target="_blank" rel="noopener">Map</a></div>
-        </article>
-        <article class="rec card" data-cats="friday saturday">
+        <article class="rec card" data-cats="saturday">
           <div class="rec-top"><span class="rec-icon">🏙️</span><span class="rec-fit">Best first-timer move</span></div>
           <h3>CAC River Cruise</h3>
-          <p>The classic, and deservedly so: 90 minutes of Chicago architecture from the river. Best windows are Friday or the early Saturday sailing.</p>
+          <p>The classic, and deservedly so: 90 minutes of Chicago architecture from the river. Saturday works only if you can book around the sock run and hotel reset.</p>
           <div class="rec-meta"><span class="mini">90 minutes</span><span class="mini">Book ahead</span></div>
           <div class="rec-actions"><a class="btn small" href="https://www.architecture.org/city-tours/river-cruise" target="_blank" rel="noopener">Official</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=Chicago%27s+First+Lady+Cruises+112+E+Wacker+Dr" target="_blank" rel="noopener">Map</a></div>
         </article>
@@ -691,7 +750,7 @@
           <div class="rec-meta"><span class="mini">45–90 min</span><span class="mini">Free</span></div>
           <div class="rec-actions"><a class="btn small" href="https://www.chicagoparkdistrict.com/visit-606" target="_blank" rel="noopener">Official</a><a class="btn small" href="https://www.google.com/maps/search/?api=1&amp;query=The+606+Bloomingdale+Trail+Chicago" target="_blank" rel="noopener">Map</a></div>
         </article>
-        <article class="rec card" data-cats="friday saturday sunday">
+        <article class="rec card" data-cats="saturday sunday">
           <div class="rec-top"><span class="rec-icon">🖼️</span><span class="rec-fit">Rain / culture save</span></div>
           <h3>Art Institute</h3>
           <p>The high-quality indoor fallback. Give it two focused hours instead of trying to conquer the collection.</p>
@@ -720,7 +779,8 @@
             <p><a href="https://carminesitalian.com/chicago/home/" target="_blank" rel="noopener">Carmine’s Chicago</a><br>Your Saturday post-welcome dinner.</p>
             <p><a href="https://suitsupply.com/en-us/stores/chicago" target="_blank" rel="noopener">Suitsupply Chicago</a> · <a href="https://www.macys.com/stores/il/chicago/mens_clothing_215.html" target="_blank" rel="noopener">Macy’s Men’s</a><br>Dress-sock mission sources.</p>
             <p><a href="https://www.renegadecraft.com/event/chicago-fall/" target="_blank" rel="noopener">Renegade Craft</a> · <a href="https://www.greencitymarket.org/market/details/lincoln" target="_blank" rel="noopener">Green City Market</a> · <a href="https://www.architecture.org/city-tours/river-cruise" target="_blank" rel="noopener">CAC Cruise</a></p>
-            <p><a href="https://www.mlb.com/cubs/schedule/2026-09/list" target="_blank" rel="noopener">Cubs schedule</a> · <a href="https://www.chicagoparkdistrict.com/visit-606" target="_blank" rel="noopener">The 606</a> · <a href="https://www.artic.edu/visit" target="_blank" rel="noopener">Art Institute</a></p>
+            <p><a href="https://www.southwest.com/air/flight-status/" target="_blank" rel="noopener">Southwest flight status</a> · <a href="https://www.chicagoparkdistrict.com/visit-606" target="_blank" rel="noopener">The 606</a> · <a href="https://www.artic.edu/visit" target="_blank" rel="noopener">Art Institute</a></p>
+            <p>Flight and hotel timing comes from CJ’s private calendar and booking confirmation; confirmation codes and other sensitive details are intentionally omitted.</p>
           </div>
         </details>
       </div>
